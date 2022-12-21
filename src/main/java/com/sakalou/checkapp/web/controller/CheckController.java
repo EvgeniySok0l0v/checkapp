@@ -20,6 +20,7 @@ public class CheckController {
     @PostMapping
     public CheckResponse getCheck(@RequestBody ProductRequest[] request, @RequestParam Long cardId){
         CheckResponse response = checkFacade.createCheckResponse(request, cardId);
+
         log.info(response.toString());
         return response;
     }
