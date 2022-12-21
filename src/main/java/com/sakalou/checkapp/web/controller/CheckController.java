@@ -19,7 +19,8 @@ public class CheckController {
 
     @PostMapping
     public CheckResponse getCheck(@RequestBody ProductRequest[] request, @RequestParam Long cardId){
-        log.info(checkFacade.createCheckResponse(request, cardId).toString());
-        return checkFacade.createCheckResponse(request, cardId);
+        CheckResponse response = checkFacade.createCheckResponse(request, cardId);
+        log.info(response.toString());
+        return response;
     }
 }
