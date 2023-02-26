@@ -27,7 +27,7 @@ public class CheckFacadeTest {
     private final CheckFacade facade = new CheckFacade(productService, discountCardService);
 
     @Test
-    public void createCheckResponseTest1() throws ProductNotFoundException, DiscountCardNotFoundException {
+    public void createCheckResponseTest1() throws ProductNotFoundException {
 
         ProductRequest[] requests = new ProductRequest[]{
           new ProductRequest(1L,1),
@@ -47,8 +47,6 @@ public class CheckFacadeTest {
                 new ProductDto("name2", 100D, false, 3, 0D, 300D))
         );
 
-
-        //when(discountCardService.getById(any())).thenReturn(null);
         when(discountCardService.makeDiscount(check, null)).thenReturn(check);
 
         CheckResponse excepted = new CheckResponse(

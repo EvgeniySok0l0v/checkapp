@@ -18,7 +18,7 @@ public class ProductServiceTest {
     private final ProductService service = new ProductServiceImpl(productRepo);
 
     @Test
-    public void getByIdTest() throws ProductNotFoundException {
+    public void checkGetByIdShouldReturnProduct() throws ProductNotFoundException {
         Product excepted = new Product(1L, "name", 100D, false);
 
         when(productRepo.findById(1L)).thenReturn(Optional.of(excepted));
@@ -28,4 +28,10 @@ public class ProductServiceTest {
         Assertions.assertEquals(excepted,actual);
         verify(productRepo, times(2)).findById(1L);
     }
+
+    @Test
+    public void checkGetByIdShouldThrowException(){
+        Assertions.assertThrows(ProductNotFoundException.class, () -> service.getById(1L));
+    }
+
 }

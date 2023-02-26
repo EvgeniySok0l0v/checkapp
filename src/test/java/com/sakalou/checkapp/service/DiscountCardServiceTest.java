@@ -24,16 +24,16 @@ public class DiscountCardServiceTest {
     private final DiscountCardRepo discountCardRepo = Mockito.mock(DiscountCardRepo.class);
     private final DiscountCardService service = new DiscountCardServiceImpl(discountCardRepo);
 
-    private Set<ProductDto> products = new HashSet<>(List.of(
+    private final Set<ProductDto> products = new HashSet<>(List.of(
             new ProductDto("name1", 100D, false, 2, 0.0, 200D),
             new ProductDto("name2", 200D, true, 5, 100D, 900D),
             new ProductDto("name3", 300D, false, 3, 0.0, 900D)
     ));
 
-    private Check check = new Check(products);
+    private final Check check = new Check(products);
 
     @Test
-    public void makeDiscountBronzeTest(){
+    public void checkMakeDiscountBronze(){
         DiscountCard card = new DiscountCard(1L, Level.BRONZE);
 
         Check excepted = new Check(products);
@@ -46,7 +46,7 @@ public class DiscountCardServiceTest {
     }
 
     @Test
-    public void makeDiscountSilverTest(){
+    public void checkMakeDiscountSilver(){
         DiscountCard card = new DiscountCard(1L, Level.SILVER);
 
         Check excepted = new Check(products);
@@ -59,7 +59,7 @@ public class DiscountCardServiceTest {
     }
 
     @Test
-    public void makeDiscountGoldTest(){
+    public void checkMakeDiscountGold(){
         DiscountCard card = new DiscountCard(1L, Level.GOLD);
 
         Check excepted = new Check(products);
@@ -72,7 +72,7 @@ public class DiscountCardServiceTest {
     }
 
     @Test
-    public void makeDiscountPlatinumTest(){
+    public void checkMakeDiscountPlatinum(){
         DiscountCard card = new DiscountCard(1L, Level.PLATINUM);
 
         Check excepted = new Check(products);
@@ -85,7 +85,7 @@ public class DiscountCardServiceTest {
     }
 
     @Test
-    public void getByIdTest() throws DiscountCardNotFoundException {
+    public void checkGetByIdShouldReturnCard() throws DiscountCardNotFoundException {
         DiscountCard excepted = new DiscountCard(1L, Level.PLATINUM);
 
         when(discountCardRepo.findById(1L)).thenReturn(Optional.of(excepted));
@@ -97,7 +97,7 @@ public class DiscountCardServiceTest {
     }
 
     @Test
-    public void createTest(){
+    public void checkCreate(){
         DiscountCard excepted = new DiscountCard(1L, Level.PLATINUM);
 
         when(discountCardRepo.save(excepted)).thenReturn(excepted);
@@ -108,15 +108,9 @@ public class DiscountCardServiceTest {
         verify(discountCardRepo, times(1)).save(any());
     }
 
-   /* @Test
-    public void getByIdExceptionTest() throws DiscountCardNotFoundException {
-        DiscountCardNotFoundException excepted = new DiscountCardNotFoundException(1L);
+    @Test
+    public void checkGetByIdShouldThrowException() {
+        Assertions.assertThrows(DiscountCardNotFoundException.class, () -> service.getById(1L));
+    }
 
-        //when(discountCardRepo.findById(1L)).thenReturn(Optional.of(excepted));
-
-        DiscountCard actual = service.getById(1L);
-
-        Assertions.assertThrows(DiscountCardNotFoundException.class,);
-        //verify(discountCardRepo, times(2)).findById(any());
-    }*/
 }

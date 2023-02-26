@@ -27,5 +27,17 @@ public class DiscountUtilsTest {
         Double actual = DiscountUtils.totalPrice(price, quantity);
 
         Assertions.assertEquals(expected,actual);
+        //org.assertj.core.api.Assertions.assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    public void checkNPEForTotalPrice(){
+        Assertions.assertThrows(NullPointerException.class, () -> DiscountUtils.totalPrice(null, 1));
+    }
+
+    @Test
+    public void checkNPEForDiscount(){
+        Assertions.assertThrows(NullPointerException.class, () -> DiscountUtils.discount(null, 10));
+    }
+
 }
