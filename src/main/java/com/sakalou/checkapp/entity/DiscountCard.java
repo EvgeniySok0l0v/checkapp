@@ -2,6 +2,8 @@ package com.sakalou.checkapp.entity;
 
 import com.sakalou.checkapp.entity.level.Level;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +21,9 @@ public class DiscountCard {
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
+    @NotNull
     private Long id;
+    @NotNull
     private Level level;
 
     @Override

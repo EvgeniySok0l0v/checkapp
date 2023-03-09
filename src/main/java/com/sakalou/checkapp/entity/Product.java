@@ -1,6 +1,8 @@
 package com.sakalou.checkapp.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,9 +20,14 @@ public class Product {
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
+    @NotNull
     private Long id;
+    @NotNull
+    @NotEmpty
     private String name;
+    @NotNull
     private Double price;
+    @NotNull
     private boolean promotional;
 
 

@@ -7,4 +7,10 @@ public interface ProductService {
 
     Product getById(Long id) throws ProductNotFoundException;
 
+    Product create(Product product);
+
+    void deleteById(Long id);
+
+    //Product update(Product product);
+
 }
