@@ -19,7 +19,7 @@ public class ProductServiceImpl implements ProductService {
         this.repo = repo;
     }
 
-    @Cacheable("products")
+    @Cacheable(value = "products", key = "#id")
     @Override
     public Product getById(Long id) throws ProductNotFoundException {
         if(repo.findById(id).isPresent()){
