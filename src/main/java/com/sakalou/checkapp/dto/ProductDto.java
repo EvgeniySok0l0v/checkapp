@@ -1,5 +1,7 @@
 package com.sakalou.checkapp.dto;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,11 +14,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProductDto {
 
+    @NotNull
+    @NotEmpty
     private String name;
+    @NotNull
     private Double price;
+    @NotNull
     private boolean promotional;
+    @NotNull
     private int quantity;
+    @NotNull
     private Double discount;
+    @NotNull
     private Double totalPrice;
 
     @Override

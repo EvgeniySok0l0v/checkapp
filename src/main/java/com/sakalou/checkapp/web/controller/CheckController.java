@@ -3,6 +3,7 @@ package com.sakalou.checkapp.web.controller;
 import com.sakalou.checkapp.facade.CheckFacade;
 import com.sakalou.checkapp.web.request.ProductRequest;
 import com.sakalou.checkapp.web.response.CheckResponse;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class CheckController {
     }
 
     @PostMapping
-    public CheckResponse getCheck(@RequestBody ProductRequest[] request, @RequestParam Long cardId){
+    public CheckResponse getCheck(@Valid @RequestBody ProductRequest[] request, @RequestParam Long cardId){
         CheckResponse response = checkFacade.createCheckResponse(request, cardId);
 
         log.info(response.toString());
