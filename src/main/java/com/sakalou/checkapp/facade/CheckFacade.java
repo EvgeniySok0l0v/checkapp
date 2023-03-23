@@ -17,6 +17,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.*;
 
+import static com.sakalou.checkapp.utils.PdfUtils.generateCheckPDF;
+
 /**
  * Facade class for working with data of check
  */
@@ -26,6 +28,7 @@ public class CheckFacade {
 
     private final ProductService productService;
     private final DiscountCardService discountCardService;
+    private static int counterId = 1;
 
     public CheckFacade(ProductService productService, DiscountCardService discountCardService) {
         this.productService = productService;
@@ -60,6 +63,9 @@ public class CheckFacade {
         } else {
             response = CheckMapper.checkToCheckResponse(check, card.getLevel().name());
         }
+
+
+        generateCheckPDF(response, counterId++);
 
         return response;
     }

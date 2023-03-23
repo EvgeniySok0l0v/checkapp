@@ -19,7 +19,7 @@ public class CheckResponse {
 
     private String cashier;
     private String shop;
-    private LocalDateTime dateTime;
+    private String dateTime;
     private Set<ProductDto> products;
     private Double totalDiscount;
     private String cardLevel;
