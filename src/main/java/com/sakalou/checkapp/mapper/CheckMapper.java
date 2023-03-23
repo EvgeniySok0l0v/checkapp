@@ -5,6 +5,9 @@ import com.sakalou.checkapp.entity.Check;
 import com.sakalou.checkapp.web.response.CheckResponse;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import static com.sakalou.checkapp.constants.Constants.FORMAT;
 
 /**
  * mapper for checks
@@ -22,7 +25,7 @@ public class CheckMapper {
         CheckResponse response = new CheckResponse();
         response.setCashier(Constants.CASHIER);
         response.setShop(Constants.SHOP);
-        response.setDateTime(LocalDateTime.now());
+        response.setDateTime(LocalDateTime.now().format(FORMAT));
         response.setProducts(check.getProducts());
         response.setCardLevel(level);
         response.setTotalDiscount(check.getTotalDiscount());

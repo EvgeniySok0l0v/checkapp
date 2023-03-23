@@ -18,6 +18,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.hibernate:hibernate-core:6.1.6.Final'
 	implementation 'org.projectlombok:lombok:1.18.22'
+	implementation 'org.apache.pdfbox:pdfbox:2.0.27'
+	implementation 'org.apache.pdfbox:pdfbox-tools:2.0.27'
+
 	compileOnly 'org.projectlombok:lombok:1.18.24'
 	annotationProcessor 'org.projectlombok:lombok:1.18.24'
 	testCompileOnly 'org.projectlombok:lombok:1.18.24'

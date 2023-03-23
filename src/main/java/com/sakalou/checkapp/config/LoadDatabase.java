@@ -23,31 +23,31 @@ public class LoadDatabase {
             log.info("Add products:\n");
             log.info("Preloading:" + productRepo.save(new Product(
                     1L,
-                    "Хлеб",
+                    "Hleb",
                     1.70,
                     false))
             );
             log.info("Preloading:" + productRepo.save(new Product(
                     2L,
-                    "Молоко",
+                    "Moloko",
                     2.05,
                     true))
             );
             log.info("Preloading:" + productRepo.save(new Product(
                     3L,
-                    "Батон",
+                    "Baton",
                     2.20,
                     false))
             );
             log.info("Preloading:" + productRepo.save(new Product(
                     7L,
-                    "Пиво",
+                    "Pivo",
                     1.45,
                     false))
             );
             log.info("Preloading:" + productRepo.save(new Product(
                     5L,
-                    "Йогурт",
+                    "Yogurt",
                     1.00,
                     true))
             );
